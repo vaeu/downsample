@@ -1,8 +1,16 @@
 #!/bin/sh
 # Downsample 24-bit FLACs to 16-bit recursively, applying dithering.
-main() { for dir; do test -d "$dir" && _resample "$dir"; done; }
+main() {
+  _check sox
+  for dir; do
+    test -d "$dir" && _resample "$dir"
+  done
+}
 die() { printf >&2 '%s: error: %s\n' "${0##*/}" "$*"; exit 2; }
 say() { printf >&2 '%s: %s\n' "${0##*/}" "$*"; }
+_check() {
+  command -v "$1" >/dev/null 2>&1 || die "$1 is not installed!"
+}
 _resample() {
   find "$1" -type f -iname \*.flac | while read -r file; do
     if test "$(soxi -b "$file")" -eq 24; then
