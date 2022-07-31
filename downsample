@@ -1,6 +1,11 @@
 #!/bin/sh
 # Downsample 24-bit FLACs to 16-bit recursively, applying dithering.
+usage() { printf >&2 'usage: %s DIR [DIR2..]\n' "${0##*/}"; exit; }
 main() {
+  case $# in
+    0) usage ;;
+    *) case "$1" in -h|--help) usage ;; esac ;;
+  esac
   _check sox; _setvars
   for dir; do
     test -d "$dir" && _resample "$dir"
