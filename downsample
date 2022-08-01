@@ -8,7 +8,12 @@ main() {
   esac
   _check sox; _setvars
   for dir; do
-    test -d "$dir" && _resample "$dir"
+    if test -d "$dir"; then
+      _resample "$dir"
+    else
+      say "warning: not a directory: $dir"
+      continue
+    fi
   done
 }
 die() { printf >&2 '%s: error: %s\n' "${0##*/}" "$*"; exit 2; }
