@@ -49,13 +49,13 @@ below.
 If we were to downsample all those files, we would either use
 
 ```
-downsample music
+$ downsample music
 ```
 
 or even
 
 ```
-downsample musique\ concrete noise
+$ downsample musique\ concrete noise
 ```
 
 and either of the two commands would produce the desired output. Now,
@@ -101,11 +101,11 @@ The sole dependency is the `sox` package that usually includes both the
 installed by executing the following command:
 
 ```
-sudo apt-get install sox
+$ sudo apt-get install sox
 ```
 
 On OpenBSD, it's as simple as running
 
 ```
-doas pkg_add sox
+$ doas pkg_add sox
 ```
