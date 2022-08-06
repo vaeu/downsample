@@ -15,7 +15,7 @@ sampling rate of 88.2 kHz shall be converted to 44.1 kHz, *not* 48 kHz.
 ## Usage
 
 ```
-downsample DIR [DIR2..]
+$ downsample DIR [DIR2..]
 ```
 
 ## Examples
